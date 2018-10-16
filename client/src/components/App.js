@@ -5,6 +5,7 @@ import Footer from './Footer';
 import Landing from './Landing';
 import AlbumList from './album/AlbumList';
 import AlbumDetail from './album/AlbumDetail';
+import Contact from './contact/Contact';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/albums" component={AlbumList} />
             <Route exact path="/albums/:albumid" component={AlbumDetail} />
+            <Route exact path="/contact" component={Contact} />
             <Footer />
           </div>
         </BrowserRouter>
