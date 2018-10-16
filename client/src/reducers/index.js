@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
+import albums from './AlbumReducer';
 
 export default combineReducers({
-  abc: { id: 'bbb' }
+  albumList: albums
 });
