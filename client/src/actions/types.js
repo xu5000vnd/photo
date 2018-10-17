@@ -3,5 +3,4 @@ export const ALBUM_DETAIL = 'album_detail';
 export const ALBUM_PHOTOS = 'album_photos';
 export const PHOTO_DETAIL = 'album_detail';
 export const PHOTO_IMAGES = 'album_images';
-export const CONTACT_SEND_MAIL = 'contact_send_mail';
 export const CSRF_TOKEN = 'csrf_token';

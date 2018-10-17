@@ -1,10 +1,10 @@
-import { CONTACT_SEND_MAIL } from './types';
+import axios from 'axios';
 
-export const contactSendMail = (values) => dispatch => {
-  console.log('contactSendMail');
-  console.log(values);
-  dispatch({
-    type: CONTACT_SEND_MAIL,
-    payload: {}
-  });
+export const contactSendMail = (values, history) => async dispatch => {
+  const res = await axios.post('/contact/sendmail', values);
+  if (res.data.status) {
+    history.push('/thankyou');
+  } else {
+    history.push('/');
+  }
 };

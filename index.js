@@ -13,19 +13,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieSession({
   keys: [keys.COOKIE_SECRET_KEY],
-  //set Time for cookie
   maxAge: 24 * 60 * 60 * 1000
 }));
 app.use(cookieParser());
-
-// error handler
-// app.use((err, req, res, next) => {
-//   if (err.code !== 'EBADCSRFTOKEN') return next(err);
-
-//   // handle CSRF token errors here
-//   res.status(403);
-//   res.send('form tampered with');
-// });
 
 // Add headers
 app.use((req, res, next) => {
@@ -36,9 +26,19 @@ app.use((req, res, next) => {
   next();
 });
 
-
+//Including routers
 require('./routers/flickrRouter')(app);
 require('./routers/csrfRouter')(app, csrf);
+require('./routers/contactRouter')(app, csrf);
+
+
+// error handler CSRF
+app.use((err, req, res, next) => {
+  if (err.code !== 'EBADCSRFTOKEN') return next(err);
+
+  res.status(403);
+  res.send('Something wrong in here.. Please, check CSRF!!!');
+});
 
 const PORT = process.env.PORT || 3002;
 app.listen(PORT);

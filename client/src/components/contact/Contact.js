@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ContactForm from './ContactForm';
+import * as actions from '../../actions';
 
 class Contact extends Component {
   onContactSubmit = (values) => {
-    console.log(values); 
+    this.props.contactSendMail(values, this.props.history); 
   }
 
   render() {
@@ -15,4 +17,4 @@ class Contact extends Component {
   }
 }
 
-export default (Contact);
+export default connect(null, actions)(Contact);
