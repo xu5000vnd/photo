@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { HTMLImageElement } from 'react-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import * as FlickrUtils from '../../utils/FlickrUtils';
@@ -13,7 +12,7 @@ class AlbumDetail extends Component {
   renderPhotos = () => {
     return _.map(this.props.albumPhotos, photo => {
       return (
-        <img src={FlickrUtils.getImage({ ...photo, size: 'm' })} key={photo.id} />
+        <img src={FlickrUtils.getImage({ ...photo, size: 'm' })} key={photo.id} alt=""/>
       );
     });
   }

@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import ContactForm from './ContactForm';
 
 class Contact extends Component {
+  onContactSubmit = (values) => {
+    console.log(values); 
+  }
+
   render() {
     return (
       <div>
-        <ContactForm />
+        <ContactForm onContactSubmit={(values) => this.onContactSubmit(values)}/>
       </div>
     );
   }
 }
 
-export default Contact;
+export default (Contact);
