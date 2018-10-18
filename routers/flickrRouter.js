@@ -1,7 +1,6 @@
 const FlickrAPI = require('flickr-sdk');
-const keys = require('../config/keys');
+const { FLICKR_API_KEY, FLICKR_USER_ID } = require('../config/keys');
 
-const { FLICKR_API_KEY, FLICKR_USER_ID } = keys;
 const Flick = new FlickrAPI(FLICKR_API_KEY);
 
 module.exports = app => {
