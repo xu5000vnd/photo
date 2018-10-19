@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import Landing from './Landing';
-import AlbumList from './album/AlbumList';
-import AlbumDetail from './album/AlbumDetail';
-import Contact from './contact/Contact';
-import Thankyou from './pages/Thankyou';
+import Routes from './Routes';
 
 class App extends Component {
   render() {
@@ -15,11 +11,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header />
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/albums" component={AlbumList} />
-            <Route exact path="/albums/:albumid" component={AlbumDetail} />
-            <Route exact path="/contact" component={Contact} />
-            <Route exact path="/thankyou" component={Thankyou} />
+            <Routes />
             <Footer />
           </div>
         </BrowserRouter>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 class Header extends Component {
   render() {
+    console.log(this);
     return(
       <div>
         <h1>Header</h1>

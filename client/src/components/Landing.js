@@ -8,6 +8,7 @@ class Landing extends Component {
         Wellcome to Landing!!!
         <Link to="/albums">Click to Albums!!</Link>
         <p><Link to="/contact">Contact!!</Link></p>
+        <p><Link to="/blog">My Blog!!</Link></p>
       </div>
     );
   }
