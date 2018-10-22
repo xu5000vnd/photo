@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case BLOG_FETCH_RECENT_POSTS:
-      return { ...state };
+      return { ...state, posts: action.payload };
     case BLOG_FETCH_CATEGORIES:
       return { ...state };
     default:
