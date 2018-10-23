@@ -2,23 +2,23 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import * as Utils from '../../utils/Utils';
 
 class Blog extends Component {
   componentWillMount() {
-    this.props.blogCateFetchCategories();
-    this.props.blogPostFetchRecentPosts();
+    const { blogPostFetchRecentPosts } = this.props;
+    blogPostFetchRecentPosts();
   }
 
   renderListPost = () => {
     return _.map(this.props.posts, post => {
-      console.log(post);
       return (
         <div key={post.id}>
           <p>Titlte: {post.title.rendered}</p>
-          <p>Short description: <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} /></p>
-          <p>Long description: <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-          </p>
-        </div>);
+          <p>Date: {Utils.dateFormat(new Date(post.date))}</p>
+          <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
+        </div>
+      );
     });
   }
 

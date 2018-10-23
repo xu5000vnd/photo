@@ -23,6 +23,7 @@ module.exports = app => {
       res.send(result.body.photoset.photo || {});
     })
     .catch((err) => {
+      res.status(404);
       res.send(err.response.body);
     });
   });
@@ -38,6 +39,7 @@ module.exports = app => {
       res.send(result.body.photoset || {});
     })
     .catch((err) => {
+      res.status(404);
       res.send(err.response.body);
     });
   });
@@ -52,6 +54,7 @@ module.exports = app => {
       res.send(result.body.photo || {});
     })
     .catch((err) => {
+      res.status(404);
       res.send(err.response.body);
     });
   });
@@ -66,6 +69,7 @@ module.exports = app => {
       res.send(result.body.sizes.size || {});
     })
     .catch((err) => {
+      res.status(404);
       res.send(err.response.body);
     });
   });
@@ -82,6 +86,7 @@ module.exports = app => {
       res.send(result.body || {});
     })
     .catch((err) => {
+      res.status(404);
       res.send(err.response.body);
     });
   });

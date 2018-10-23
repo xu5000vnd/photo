@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { URL_API_BLOG } from '../keys';
-import { BLOG_FETCH_RECENT_POSTS, BLOG_FETCH_CATEGORIES } from './types';
+import * as Utils from '../utils/Utils';
+import {
+  BLOG_FETCH_RECENT_POSTS,
+  BLOG_FETCH_CATEGORIES,
+  BLOG_FETCH_POST
+} from './types';
 
 export const blogPostFetchRecentPosts = () => async (dispatch) => {
   const res = await axios(`${URL_API_BLOG}/posts`);
@@ -11,9 +16,30 @@ export const blogPostFetchRecentPosts = () => async (dispatch) => {
 };
 
 export const blogCateFetchCategories = () => async dispatch => {
-  const res = await axios(`${URL_API_BLOG}/categories`);
+  const categories = Utils.getCookie('categories');
+  let data = '';
+  if(categories) {
+    data = JSON.parse(categories);
+  } else {
+    const res = await axios(`${URL_API_BLOG}/categories`);
+    Utils.setCookie('categories', JSON.stringify(res.data));
+    data = res.data;
+  }
+
   dispatch({
     type: BLOG_FETCH_CATEGORIES,
-    payload: res.data
+    payload: data
   });
 };
+
+export const blogGetPost = (history, postId) => async dispatch => {
+  try {
+    const res = await axios(`${URL_API_BLOG}/posts/${postId}`);
+    dispatch({
+      type: BLOG_FETCH_POST,
+      payload: res.data
+    });
+  } catch (error) {
+    history.push('/404');
+  }
+}

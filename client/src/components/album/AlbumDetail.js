@@ -6,13 +6,14 @@ import * as FlickrUtils from '../../utils/FlickrUtils';
 
 class AlbumDetail extends Component {
   componentDidMount() {
-    this.props.albumGetDetail(this.props.match.params.albumid);
+    const { albumGetDetail, history, match } = this.props;
+    albumGetDetail(history, match.params.albumid);
   }
 
   renderPhotos = () => {
     return _.map(this.props.albumPhotos, photo => {
       return (
-        <img src={FlickrUtils.getImage({ ...photo, size: 'm' })} key={photo.id} alt=""/>
+        <img src={FlickrUtils.getImage({ ...photo, size: 'm' })} key={photo.id} alt="" />
       );
     });
   }
