@@ -35,7 +35,7 @@ const dateFormat = (date, format) => {
 }
 
 const setCookie = (name, value) => {
-  const date = new Date(_.now() + 24 * 60 * 60 * 1000);
+  const date = new Date(_.now() + 1 * 30 * 60 * 1000);
   const expires = "expires=" + date.toUTCString();
   document.cookie = name + "=" + value + ";" + expires;
 }
