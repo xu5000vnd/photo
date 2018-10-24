@@ -6,7 +6,9 @@ import {
   BLOG_FETCH_CATEGORIES,
   BLOG_FETCH_POST,
   BLOG_FETCH_POSTS,
-  BLOG_FETCH_TAGS
+  BLOG_FETCH_TAGS,
+  BLOG_FETCH_PAGES,
+  BLOG_FETCH_PAGE
 } from './types';
 
 export const blogFetchRecentPosts = () => async (dispatch) => {
@@ -84,4 +86,25 @@ export const blogTagGetPosts = (tagId) => async dispatch => {
     type: BLOG_FETCH_POSTS,
     payload: res.data
   });
+};
+
+export const blogFetchPages = () => async dispatch => {
+  const res = await axios(`${URL_API_BLOG}/pages`);
+
+  dispatch({
+    type: BLOG_FETCH_PAGES,
+    payload: res.data
+  });
+};
+
+export const blogGetPage = (history, pageId) => async dispatch => {
+  try {
+    const res = await axios(`${URL_API_BLOG}/pages/${pageId}`);
+    dispatch({
+      type: BLOG_FETCH_PAGE,
+      payload: res.data
+    });
+  } catch (error) {
+    history.push('/404');
+  }
 };

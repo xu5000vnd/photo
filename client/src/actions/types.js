@@ -9,3 +9,5 @@ export const BLOG_FETCH_CATEGORIES = 'blog_fetch_categories';
 export const BLOG_FETCH_TAGS = 'blog_fetch_tags';
 export const BLOG_FETCH_POSTS = 'blog_fetch_posts';
 export const BLOG_FETCH_POST = 'blog_fetch_post';
+export const BLOG_FETCH_PAGES = 'blog_fetch_pages';
+export const BLOG_FETCH_PAGE = 'blog_fetch_page';
