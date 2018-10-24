@@ -6,8 +6,8 @@ import { PostItem } from '../common';
 
 class Blog extends Component {
   componentWillMount() {
-    const { blogPostFetchRecentPosts } = this.props;
-    blogPostFetchRecentPosts();
+    const { blogFetchRecentPosts } = this.props;
+    blogFetchRecentPosts();
   }
 
   renderListPost = () => {

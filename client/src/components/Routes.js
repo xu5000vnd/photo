@@ -10,6 +10,7 @@ import Blog from './blog/Blog';
 import PostDetail from './blog/posts/PostDetail';
 import CategoryMenu from './blog/CategoryMenu';
 import CategoryDetail from './blog/categories/CategoryDetail';
+import TagDetail from './blog/tags/TagDetail';
 
 export default () => {
   return (
@@ -23,6 +24,7 @@ export default () => {
       <Route exact path="/blog" component={Blog} />
       <Route exact path="/blog/categories/:categoryid/*" component={CategoryDetail} />
       <Route exact path="/blog/posts/:postid/*" component={PostDetail} />
+      <Route exact path="/blog/tags/:tagid/*" component={TagDetail} />
       <Route exact path="/404" component={NotFound} />
     </div>
   );

@@ -6,8 +6,9 @@ import * as actions from '../../actions';
 
 class CategoryMenu extends Component {
   componentWillMount() {
-    const { blogCateFetchCategories } = this.props;
-    blogCateFetchCategories();
+    const { blogFetchCategories, blogFetchTags } = this.props;
+    blogFetchCategories();
+    blogFetchTags();
   }
 
   renderCategories = () => {
