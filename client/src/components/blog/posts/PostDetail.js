@@ -39,7 +39,9 @@ class PostDetail extends Component {
   }
 }
 
-const mapStateToProps = ({ blogs }) => {
+const mapStateToProps = ({ blogs }, ownProps) => {
+  console.log('ownProps');
+  console.log(ownProps);
   return { postDetail: blogs.postDetail, tags: blogs.tags };
 }
 

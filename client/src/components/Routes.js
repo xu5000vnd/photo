@@ -1,18 +1,19 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Landing from './Landing';
+import Landing from './pages/Landing';
 import AlbumList from './album/AlbumList';
 import AlbumDetail from './album/AlbumDetail';
 import Contact from './contact/Contact';
 import Thankyou from './pages/Thankyou';
 import NotFound from './pages/NotFound';
 import Blog from './blog/Blog';
-import PostDetail from './blog/posts/PostDetail';
 import CategoryMenu from './blog/CategoryMenu';
 import PageMenu from './blog/PageMenu';
 import CategoryDetail from './blog/categories/CategoryDetail';
 import TagDetail from './blog/tags/TagDetail';
 import PageDetail from './blog/pages/PageDetail';
+import PostDetail from './blog/posts/PostDetail';
+import Search from './blog/Search';
 
 export default () => {
   return (
@@ -28,7 +29,8 @@ export default () => {
       <Route exact path="/blog/categories/:categoryid/*" component={CategoryDetail} />
       <Route exact path="/blog/posts/:postid/*" component={PostDetail} />
       <Route exact path="/blog/tags/:tagid/*" component={TagDetail} />
-      <Route exact path="/blog/page/:pageid/*" component={PageDetail} />
+      <Route exact path="/blog/pages/:pageid/*" component={PageDetail} />
+      <Route exact path="/blog/search/:query" component={Search} />
       <Route exact path="/404" component={NotFound} />
     </div>
   );

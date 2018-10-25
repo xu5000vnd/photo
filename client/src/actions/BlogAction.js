@@ -90,7 +90,6 @@ export const blogTagGetPosts = (tagId) => async dispatch => {
 
 export const blogFetchPages = () => async dispatch => {
   const res = await axios(`${URL_API_BLOG}/pages`);
-
   dispatch({
     type: BLOG_FETCH_PAGES,
     payload: res.data
@@ -108,3 +107,11 @@ export const blogGetPage = (history, pageId) => async dispatch => {
     history.push('/404');
   }
 };
+
+export const blogSearchPosts = (query) => async dispatch => {
+  const res = await axios(`${URL_API_BLOG}/posts?_embed&search=${query}`);
+  dispatch({
+    type: BLOG_FETCH_POSTS,
+    payload: res.data
+  });
+}

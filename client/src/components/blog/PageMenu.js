@@ -22,7 +22,7 @@ class PageMenu extends Component {
                 return (
                   <li key={page.id}>
                     <span>
-                      <Link to={`/blog/pages/${page.id}/${page.slug}`}>{page.name}</Link>
+                      <Link to={`/blog/pages/${page.id}/${page.slug}`}>{page.title.rendered}</Link>
                     </span>
                   </li>
                 );
@@ -38,7 +38,7 @@ class PageMenu extends Component {
         return (
           <li key={page.id}>
             <span>
-              <Link to={`/blog/pages/${page.id}/${page.slug}`}>{page.name}</Link>
+              <Link to={`/blog/pages/${page.id}/${page.slug}`}>{page.title.rendered}</Link>
             </span>
             {renderSubPage(page.id)}
           </li>
@@ -50,6 +50,7 @@ class PageMenu extends Component {
   render() {
     return (
       <div>
+        <h2>Pages</h2>
         <ul>
           {this.renderPages()}
         </ul>

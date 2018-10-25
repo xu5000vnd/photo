@@ -10,7 +10,15 @@ class PageDetail extends Component {
     blogGetPage(history, match.params['pageid']);
   }
 
-  
+  componentDidUpdate(preProps) {
+    const oldId = preProps.match.params['pageid'];
+    const newId = this.props.match.params['pageid'];
+    if (oldId !== newId) {
+      const { history, match, blogGetPage } = this.props;
+      blogGetPage(history, match.params['pageid']);
+    }
+  }
+
   render() {
     const { pageDetail } = this.props;
     if (!_.isEmpty(pageDetail)) {

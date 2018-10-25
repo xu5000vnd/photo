@@ -14,10 +14,10 @@ const PostItem = ({ post }) => {
           //   src={post._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url} />
           : ''
       }
-      <p>Titlte: {post.title.rendered}</p>
+      
+      <p><Link to={`/blog/posts/${post.id}/${post.slug}`} postDetailProps={post}>{post.title.rendered}</Link></p>
       <p>Date: {Utils.dateFormat(new Date(post.date))}</p>
       <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
-      <Link to={`/blog/posts/${post.id}/${post.slug}`}>Read more</Link>
     </div>
   );
 }
