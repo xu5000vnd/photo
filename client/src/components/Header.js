@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 // import { SearchForm } from './common';
 
 const Header = () => {
@@ -51,10 +51,10 @@ const Header = () => {
             <a href="#" className="category_name ">Foody, still life</a>
           </li>
           <li className="category top_level">            
-            <Link to="/blog">Blog</Link>
+            <NavLink to="/blog">Blog</NavLink>
           </li>
           <li className="category top_level">
-            <Link to="/contact">Contact</Link>
+            <NavLink to="/contact">Contact</NavLink>
           </li>
         </ul>
       </nav>
