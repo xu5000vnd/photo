@@ -1,21 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 // import { SearchForm } from './common';
 
 const Header = () => {
   return (
-    // <div>
-    //   <h1>Header</h1>
-    //   <h2><Link to="/">Logo</Link></h2>
-    //   <h2><Link to="/blog">My Blog!</Link></h2>
     //   <SearchForm {...this.props} />
-    // </div>
-
     <div id="bottom_bar">
       <div id="logo">
-        <a href="/">
+        <Link to="/">
           <img src="https://format-com-cld-res.cloudinary.com/image/private/s--2j_JEvco--/c_limit,g_center,h_65535,w_960/a_auto,fl_keep_iptc.progressive.apng/72252-4417458-logo.png" nopin="true" alt="Hideaki Hamada Photography" />
-        </a>
+        </Link>
       </div>
       <nav>
         <ul id="menu" className="menu_list">
@@ -60,7 +54,7 @@ const Header = () => {
             <Link to="/blog">Blog</Link>
           </li>
           <li className="category top_level">
-            <a href="#" className="category_name ">Contact</a>
+            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       </nav>
