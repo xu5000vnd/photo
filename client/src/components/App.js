@@ -11,7 +11,7 @@ class App extends Component {
         <div className="container">
           <Route path="/" component={Header} />
           <Routes />
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </BrowserRouter>
     );

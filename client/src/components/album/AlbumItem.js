@@ -5,9 +5,7 @@ class AlbumItem extends Component {
   render() {
     return (
       <div>
-        <p>Ablum ID: <Link to={`/albums/${this.props.albumid}`}>{this.props.albumid}</Link></p>
-        <p>Ablum name: {this.props.title}</p>
-        <p>Ablum description: {this.props.description}</p>
+        <p><Link to={`/albums/${this.props.albumid}/${this.props.title}`}>{this.props.title}</Link></p>        
       </div>
     );
   }
