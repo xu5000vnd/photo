@@ -21,7 +21,7 @@ class AlbumDetail extends Component {
   render() {
     return (
       <div>
-        <h1>Album detail {this.props.match.params.albumid}</h1>
+        <h1>{this.props.match.params[0]}</h1>
         {this.renderPhotos()}
       </div>
     );

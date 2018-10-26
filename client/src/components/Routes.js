@@ -20,7 +20,7 @@ export default () => {
     <div>
       <Route exact path="/" component={Landing} />
       <Route exact path="/albums" component={AlbumList} />
-      <Route exact path="/albums/:albumid" component={AlbumDetail} />
+      <Route exact path="/albums/:albumid/*" component={AlbumDetail} />
       <Route exact path="/contact" component={Contact} />
       <Route exact path="/thankyou" component={Thankyou} />
       <Route exact path="/blog*" component={CategoryMenu} />
