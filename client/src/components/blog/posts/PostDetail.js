@@ -7,8 +7,10 @@ import * as Utils from '../../../utils/Utils';
 
 class PostDetail extends Component {
   componentWillMount() {
-    const { history, match, blogGetPost, blogFetchTags } = this.props;
-    blogGetPost(history, match.params['postid']);
+    if (!this.props.ignoreLoad) {
+      const { history, match, blogGetPost } = this.props;
+      blogGetPost(history, match.params['postid']);
+    }
   }
 
   renderTags = () => {
@@ -39,10 +41,28 @@ class PostDetail extends Component {
   }
 }
 
+const checkExistPost = (posts, postid) => {
+  for (let i = 0; i < posts.length; i++) {
+    if (posts[i].id === parseInt(postid)) {
+      return posts[i];
+    }
+  }
+  return false;
+}
+
 const mapStateToProps = ({ blogs }, ownProps) => {
-  console.log('ownProps');
-  console.log(ownProps);
-  return { postDetail: blogs.postDetail, tags: blogs.tags };
+  let postDetail = checkExistPost(blogs.posts, ownProps.match.params['postid']);
+  let ignoreLoad = true;
+  if (!postDetail) {
+    postDetail = blogs.postDetail;
+    ignoreLoad = false;
+  }
+  
+  return {
+    postDetail,
+    tags: blogs.tags,
+    ignoreLoad
+  };
 }
 
 export default connect(mapStateToProps, actions)(PostDetail);

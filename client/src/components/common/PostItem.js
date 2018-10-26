@@ -15,7 +15,7 @@ const PostItem = ({ post }) => {
           : ''
       }
       
-      <p><Link to={`/blog/posts/${post.id}/${post.slug}`} postDetailProps={post}>{post.title.rendered}</Link></p>
+      <p><Link to={`/blog/posts/${post.id}/${post.slug}`}>{post.title.rendered}</Link></p>
       <p>Date: {Utils.dateFormat(new Date(post.date))}</p>
       <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
     </div>
