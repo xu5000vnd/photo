@@ -9,6 +9,10 @@ class Search extends Component {
     this.props.blogSearchPosts(this.props.match.params['query']);
   }
 
+  componentDidMount() {
+    document.title = window.siteName + " | Search | " + this.props.match.params['query'];
+  }
+
   componentDidUpdate(preProps) {
     const oldQuery = preProps.match.params['query'];
     const newQuery = this.props.match.params['query'];

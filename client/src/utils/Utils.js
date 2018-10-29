@@ -34,8 +34,8 @@ const dateFormat = (date, format) => {
   return date.toFormat(format);
 }
 
-const setCookie = (name, value) => {
-  const date = new Date(_.now() + 1 * 30 * 60 * 1000);
+const setCookie = (name, value, minutes = 30) => {
+  const date = new Date(Date.now() + minutes * 60 * 1000);
   const expires = "expires=" + date.toUTCString();
   document.cookie = name + "=" + value + ";" + expires;
 }
@@ -56,9 +56,43 @@ const getCookie = (name) => {
   return "";
 }
 
+const setLocalStorage = (name, value, minutes = 30) => {
+  setCookie(name, name, minutes);
+  window.localStorage.setItem(name, value);
+}
+
+const getLocalStorage = (name) => {
+  if (checkTimeSavingLocalStorage(name)) {
+    return window.localStorage.getItem(name);
+  } else {
+    deleteStorage(name);
+    return;
+  }
+}
+
+const deleteStorage = (name) => {
+  window.localStorage.removeItem(name);
+}
+
+const checkTimeSavingLocalStorage = (name) => {
+  return decodeURIComponent(document.cookie).search(name) !== -1;
+}
+
+const getTypeName = (datas, typeId) => {
+  for(let i = 0; i < datas.length; i++) {
+    if(datas[i].id === parseInt(typeId)) {
+      return datas[i].name;
+    }
+  }
+  return;
+}
+
 export {
   validateForm,
   dateFormat,
   setCookie,
-  getCookie
+  getCookie,
+  setLocalStorage,
+  getLocalStorage,
+  getTypeName
 };

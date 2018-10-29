@@ -3,10 +3,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../../actions';
 import { PostItem } from '../../common';
+import * as Utils from '../../../utils/Utils';
 
 class TagDetail extends Component {
   componentWillMount() {
     this.props.blogTagGetPosts(this.props.match.params['tagid']);
+  }
+
+  componentDidMount() {
+    document.title = window.siteName + " | " + Utils.getTypeName(this.props.tags, this.props.match.params['tagid']);
   }
 
   renderPosts = () => {
@@ -30,7 +35,7 @@ class TagDetail extends Component {
 }
 
 const mapStateToProps = ({ blogs }) => {
-  return { posts: blogs.posts };
+  return { posts: blogs.posts, tags: blogs.tags };
 }
 
 export default connect(mapStateToProps, actions)(TagDetail);

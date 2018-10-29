@@ -17,6 +17,7 @@ class PageDetail extends Component {
       const { history, match, blogGetPage } = this.props;
       blogGetPage(history, match.params['pageid']);
     }
+    document.title = window.siteName + " | " + this.props.pageDetail.title.rendered;
   }
 
   render() {

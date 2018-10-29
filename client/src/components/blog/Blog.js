@@ -10,6 +10,10 @@ class Blog extends Component {
     blogFetchRecentPosts();
   }
 
+  componentDidMount() {
+    document.title = window.siteName + " | Blog";
+  }
+
   renderListPost = () => {
     return _.map(this.props.posts, post => {
       return (

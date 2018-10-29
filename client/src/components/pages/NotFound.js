@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class NotFound extends Component {
+  componentDidMount() {
+    document.title = window.siteName + " | Not Found";
+  }
+
   render() {
     return (
       <div>

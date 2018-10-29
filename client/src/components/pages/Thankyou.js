@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class Thankyou extends Component {
+  componentDidMount() {
+    document.title = window.siteName + " | Thank you";
+  }
+
   render() {
     return (
       <div>

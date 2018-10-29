@@ -12,22 +12,30 @@ import {
 } from './types';
 
 export const blogFetchRecentPosts = () => async (dispatch) => {
-  const res = await axios(`${URL_API_BLOG}/posts?_embed`);
+  const recentPosts = Utils.getLocalStorage('recentPosts');
+  let data = '';
+  if (recentPosts) {
+    data = JSON.parse(recentPosts);
+  } else {
+    const res = await axios(`${URL_API_BLOG}/posts?_embed`);
+    Utils.setLocalStorage('recentPosts', JSON.stringify(res.data));
+    data = res.data;
+  }
+
   dispatch({
     type: BLOG_FETCH_RECENT_POSTS,
-    payload: res.data
+    payload: data
   });
 };
 
 export const blogFetchCategories = () => async dispatch => {
-  // const categories = Utils.getCookie('categories');
-  const categories = null;
+  const categories = Utils.getLocalStorage('categories');
   let data = '';
   if (categories) {
     data = JSON.parse(categories);
   } else {
     const res = await axios(`${URL_API_BLOG}/categories`);
-    Utils.setCookie('categories', JSON.stringify(res.data));
+    Utils.setLocalStorage('categories', JSON.stringify(res.data));
     data = res.data;
   }
 
@@ -38,14 +46,13 @@ export const blogFetchCategories = () => async dispatch => {
 };
 
 export const blogFetchTags = () => async dispatch => {
-  // const tags = Utils.getCookie('tags');
-  const tags = null;
+  const tags = Utils.getLocalStorage('tags');
   let data = '';
   if (tags) {
     data = JSON.parse(tags);
   } else {
     const res = await axios(`${URL_API_BLOG}/tags`);
-    Utils.setCookie('tags', JSON.stringify(res.data));
+    Utils.setLocalStorage('tags', JSON.stringify(res.data));
     data = res.data;
   }
 

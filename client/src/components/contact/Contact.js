@@ -4,6 +4,10 @@ import ContactForm from './ContactForm';
 import * as actions from '../../actions';
 
 class Contact extends Component {
+  componentDidMount() {
+    document.title = window.siteName + " | Contact";
+  }
+
   onContactSubmit = (values) => {
     this.props.contactSendMail(values, this.props.history); 
   }

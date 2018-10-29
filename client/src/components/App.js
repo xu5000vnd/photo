@@ -5,6 +5,12 @@ import Header from './Header';
 import Routes from './Routes';
 
 class App extends Component {
+  componentWillMount() {
+    document.title = window.siteName;
+    window.meta.keywords.setAttribute('content', 'Horison, react-wordpress, reactjs, wordpress');
+    window.meta.description.setAttribute('content', 'Copy this line to page you want to set meta tags');
+  }
+
   render() {
     return (
       <BrowserRouter>

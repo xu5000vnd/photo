@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class AlbumItem extends Component {
+  componentDidMount() {
+    document.title = window.siteName + " | Album " + this.props.title;
+  }
+
   render() {
     return (
       <div>
